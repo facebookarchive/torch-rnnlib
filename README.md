@@ -4,8 +4,7 @@ torch-rnnlib is a library for modeling sequential data within Torch7's NN framew
 
 ## Installation
 
-Run `luarocks install torch-rnnlib`.
-If the package has not yet been uploaded to luarocks, then run `luarocks make rocks/rnnlib-0.1-1.rockspec`.
+Run `luarocks make rocks/rnnlib-0.1-1.rockspec`.
 
 ### Core dependencies
 - [torch7](https://github.com/torch/torch7)

@@ -6,11 +6,11 @@ source = {
 }
 
 description = {
-    summary = "",
+    summary = "torch-rnnlib",
     detailed = [[
     ]],
-    homepage = "http://...",
-    license = "whatever",
+    homepage = "https://github.com/facebookresearch/torch-rnnlib",
+    license = "BSD",
 }
 
 dependencies = {
