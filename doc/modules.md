@@ -1,6 +1,6 @@
 # Modules
 
-## nn.RNN
+## [nn.RNN](../rnnlib/nn/RNN.lua)
 
 ```lua
 nn.RNN{
@@ -13,7 +13,9 @@ nn.RNN{
 }
 ```
 
-## nn.LSTM
+
+
+## [nn.LSTM](../rnnlib/nn/LSTM.lua)
 
 ```lua
 nn.LSTM{
@@ -26,7 +28,9 @@ nn.LSTM{
 }
 ```
 
-## nn.GRU
+
+
+## [nn.GRU](../rnnlib/nn/GRU.lua)
 
 ```lua
 nn.GRU{
@@ -39,7 +43,9 @@ nn.GRU{
 }
 ```
 
-## nn.SequenceTable
+
+
+## [nn.SequenceTable](../rnnlib/nn/SequenceTable.lua)
 
 ```lua
 nn.SequenceTable{
@@ -49,7 +55,8 @@ nn.SequenceTable{
 }
 ```
 
-This container applies a sequence of modules to an input sequence along a given
+This is a subclass of [nn.Container](https://github.com/torch/nn/blob/master/Container.lua)
+that applies a sequence of modules to an input sequence along a given
 dimension. Each module in self.modules takes as input both the state of the
 previous module and the next item in the input sequence. The output of the
 internal modules should be of the same dimension as the initial input.
@@ -57,9 +64,9 @@ internal modules should be of the same dimension as the initial input.
 The container accumulates the outputs of the modules and returns them as a
 table.
 
-See `rnnlib/nn/SequenceTable` for more details.
+See [SequenceTable.lua](../rnnlib/nn/SequenceTable.lua) for more details.
 
-## nn.RecurrentTable
+## [nn.RecurrentTable](../rnnlib/nn/RecurrentTable.lua)
 
 ```lua
 nn.RecurrentTable{
@@ -70,4 +77,5 @@ nn.RecurrentTable{
 }
 ```
 
-This module is a wrapper around nn.SequenceTable where the same module is cloned in order to match the length of the input sequence.
+This module is a wrapper around [nn.SequenceTable](../rnnlib/nn/SequenceTable.lua)
+where the same module is cloned in order to match the length of the input sequence.
