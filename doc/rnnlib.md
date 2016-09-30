@@ -1,6 +1,6 @@
 # rnnlib
 
-## [rnnlib.setupRecurrent](../rnnlib/recurrentnetwork.lua#L17)
+## [rnnlib.setupRecurrent](../rnnlib/recurrentnetwork.lua#L16)
 
 ```lua
 rnnlib.setupRecurrent{
@@ -12,7 +12,7 @@ rnnlib.setupRecurrent{
 }
 ```
 
-## [rnnlib.makeRecurrent](../rnnlib/recurrentnetwork.lua#L88)
+## [rnnlib.makeRecurrent](../rnnlib/recurrentnetwork.lua#L87)
 
 ```lua
 rnnlib.makeRecurrent{
@@ -25,7 +25,7 @@ rnnlib.makeRecurrent{
 }
 ```
 
-## [rnnlib.makeCudnnRecurrent](../rnnlib/recurrentnetwork.lua#L144)
+## [rnnlib.makeCudnnRecurrent](../rnnlib/recurrentnetwork.lua#L143)
 
 ```lua
 rnnlib.makeRecurrent{
