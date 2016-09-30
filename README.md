@@ -42,7 +42,7 @@ local rnnlib = require 'rnnlib'
 local lstm   = rnnlib.makeRecurrent{
     cellfn    = rnnlib.cell.LSTM,
     inputsize = 256,
-    hids      = { 512, 512 },
+    hids      = { 512, 512, 512 },
 }
 ```
 There is also a Cudnn wrapper for this level.
@@ -51,7 +51,7 @@ local rnnlib = require 'rnnlib'
 local lstm   = rnnlib.makeCudnnRecurrent{
     cellstring = 'LSTM',
     inputsize  = 256,
-    hids       = { 512, 512 },
+    hids       = { 512, 512, 512 },
 }
 ```
 3\. The nn.SequenceTable interface can be used to chain computations as a 'scan' would. The nn.RecurrentTable constructor is simply a lightweight wrapper that clones the recurrent module over time for you. However, do take note that this is the lowest-level interface and you will have to call `rnnlib.setupRecurrent(model, initializationfunctions)` in order to setup the recurrent hidden state behaviour.
@@ -131,7 +131,7 @@ model:updateParameters(0.1)
 We benchmark against the good work done in similar RNN libraries,
 [rnn](https://github.com/Element-Research/rnn) and [torch-rnn](https://github.com/jcjohnson/torch-rnn),
 on the Penn Tree Bank dataset with an LSTM language model with hidden dimensions of 256, 512, 1024, 2048, and 4096.
-All models have a sequence length of 50, a batch size of 64, 2 layers, and were averaged over 1000 iterations.
+All models have a sequence length of 20, a batch size of 64, 2 layers, and were averaged over 1000 iterations.
 
 <img src='imgs/rnnbench.png' width="800px">
 

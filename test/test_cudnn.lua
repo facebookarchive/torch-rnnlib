@@ -498,7 +498,7 @@ function cudnntest.testSimpleGRU()
     hid[2]:fill(0.5)
     local cudnninput   = torch.CudaTensor(time, 1, ins):fill(0.5)
     local rnnlibinput  = cudnninput:split(1)
-    for i              = 1, #rnnlibinput do
+    for i = 1, #rnnlibinput do
         rnnlibinput[i] = rnnlibinput[i]:view(1, -1)
     end
     rnnlibinput        = { hid, rnnlibinput }

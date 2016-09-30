@@ -48,6 +48,7 @@ RecurrentTable.add = function(...) error('Cannot add module to RecurrentTable') 
 
 -- | Unroll the core model (the column model)
 -- to create an RNN. We unroll until self.modules is of length `size`.
+-- This is lazy and does *not* reclone.
 RecurrentTable.extend = argcheck{
     { name = 'self' , type = 'nn.RecurrentTable' },
     { name = 'size' , type = 'number'            },
@@ -60,7 +61,25 @@ RecurrentTable.extend = argcheck{
     end
 }
 
--- | Apply a function to the module.
+-- Forcibly resize an RNN to `size` timesteps.
+-- This deletes all the previous clones.
+-- Please invoke the garbage collector after calling this method.
+RecurrentTable.resize = argcheck{
+    { name = 'self' , type = 'nn.RecurrentTable' },
+    { name = 'size' , type = 'number'            },
+    call = function(self, size)
+        assert(self.modules and #self.modules >= 1)
+        assert(self.sharedfields)
+        for t = #self.modules, 2, -1 do
+            self.modules[t] = nil
+        end
+        self:extend(size)
+    end
+}
+
+-- | Apply a function to the main module.
+-- This does not overload the :applyToModules() function so stuff like
+-- :training() and :evaluate() are not changed.
 RecurrentTable.apply = argcheck{
     { name = 'self' , type = 'nn.RecurrentTable' },
     { name = 'fun'  , type = 'function'          },
@@ -79,6 +98,18 @@ RecurrentTable.parameters = argcheck{
     call = function(self)
         assert(self.modules and #self.modules >= 1)
         return self.modules[1]:parameters()
+    end
+}
+
+-- | :getParameters() makes all clones point to an invalid region in memory,
+-- so all clones *must be re-cloned*.
+RecurrentTable.getParameters = argcheck{
+    { name = 'self' , type = 'nn.RecurrentTable' },
+    call = function(self)
+        local w, dw = self.modules[1]:getParameters()
+        -- Recall the resize removes all clones and reclones.
+        self:resize(#self.modules)
+        return w, dw
     end
 }
 
