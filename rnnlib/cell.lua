@@ -65,6 +65,15 @@ cell.gModule = function(fn)
     return nn.gModule({state, input}, {fn(state, input)})
 end
 
+-- | Wrap the output of a cell with another module.
+cell.wrapOutput = function(make, constructor, ...)
+    local module = constructor(...)
+    return function(...)
+        local nexth, output = make(...)
+        return nexth, module(output)
+    end
+end
+
 --------------------------------------------------------------------------------
 -- Cell definitions
 --------------------------------------------------------------------------------

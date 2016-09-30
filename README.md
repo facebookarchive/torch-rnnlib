@@ -22,6 +22,9 @@ Run `luarocks make rocks/rnnlib-0.1-1.rockspec`.
 - [torch-tds](https://github.com/torch/tds)
 - [torch-sys](https://github.com/torch/sys)
 
+### Dependencies for building the documentation
+- [paths](https://github.com/torch/paths)
+
 ## Usage
 
 ### Construct the model
@@ -127,13 +130,10 @@ model:updateParameters(0.1)
 
 We benchmark against the good work done in similar RNN libraries,
 [rnn](https://github.com/Element-Research/rnn) and [torch-rnn](https://github.com/jcjohnson/torch-rnn),
-on the Penn Tree Bank dataset with an LSTM language model with 1, 2, and 3 layers;
-and hidden dimensions of 64, 128, 256, 512, and 1024.
-All models have a sequence length of 50, a batch size of 64, and were averaged over 1000 iterations.
+on the Penn Tree Bank dataset with an LSTM language model with hidden dimensions of 256, 512, 1024, 2048, and 4096.
+All models have a sequence length of 50, a batch size of 64, 2 layers, and were averaged over 1000 iterations.
 
-<img src='https://cdn.rawgit.com/facebookincubator/torch-rnnlib/master/imgs/rnnlib1.svg' width="800px">
-<img src='https://cdn.rawgit.com/facebookincubator/torch-rnnlib/master/imgs/rnnlib2.svg' width="800px">
-<img src='https://cdn.rawgit.com/facebookincubator/torch-rnnlib/master/imgs/rnnlib3.svg' width="800px">
+<img src='imgs/rnnbench.png' width="800px">
 
 ## Join the community
 See the CONTRIBUTING file for how to help out.

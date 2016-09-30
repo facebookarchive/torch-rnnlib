@@ -16,8 +16,8 @@ pcall(require, 'cudnn')
 
 require 'rnnlib.nn.WrappedCudnnRnn'
 
-require 'rnnlib.SequenceTable'
-require 'rnnlib.RecurrentTable'
+require 'rnnlib.nn.SequenceTable'
+require 'rnnlib.nn.RecurrentTable'
 
 require 'rnnlib.cell'
 require 'rnnlib.make'

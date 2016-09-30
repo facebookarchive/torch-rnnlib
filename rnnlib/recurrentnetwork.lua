@@ -15,6 +15,17 @@ local mutils   = require 'rnnlib.mutils'
 local rnnlib   = require 'rnnlib.env'
 
 rnnlib.setupRecurrent = argcheck{
+    doc = [[
+<a name="setupRecurrent">
+### rnnlib.setupRecurrent(@ARGP)
+@ARGT
+
+Setup the stateful part of a recurrent network.
+Take note that if you have a single layer recurrent network
+(nn.Recurrent Table) without an nn.SequenceTable wrapper, you may have to
+index into the hiddenbuffer like so: rnn.hiddenbuffer[1] since `initfs`
+is required to be a table of functions.
+]],
     { name = 'network'    , type = 'nn.SequenceTable' ,                              },
     { name = 'initfs'     , type = 'table'            ,                              },
     { name = "hinitfun"   , type = "function"         , opt = true                   },

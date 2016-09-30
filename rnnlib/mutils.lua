@@ -177,7 +177,8 @@ utils.inmodule = function(model, inmodule)
 end
 
 -- | Pipes a batch through a module and splits along the first dimension.
--- The inmodule is applied to an input tensor of seqlen x nbatch x hidden.
+-- The inmodule is applied to an input tensor of seqlen x nbatch and
+-- gives the recurrent model an input of {seqlen} x bsz x hidden.
 utils.batchedinmodule = function(model, inmodule)
     model = assertWrapped(model)
     local inm = nn.ParallelTable()
