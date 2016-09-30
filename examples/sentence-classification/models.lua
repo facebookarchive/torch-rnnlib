@@ -56,6 +56,7 @@ function models.birnn(ntoken, hids, nclasses, cell, sharefields, dropout)
     -- This will not save the hidden state in between batches.
     local birnn = rnnlib.makeBidirectional(
         cell,
+        emsize,
         hids,
         sharefields
     )

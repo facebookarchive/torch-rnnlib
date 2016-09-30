@@ -133,7 +133,7 @@ We benchmark against the good work done in similar RNN libraries,
 on the Penn Tree Bank dataset with an LSTM language model with hidden dimensions of 256, 512, 1024, 2048, and 4096.
 All models have a sequence length of 20, a batch size of 64, 2 layers, and were averaged over 1000 iterations.
 
-<img src='imgs/rnnbench.png' width="800px">
+<img src='img/rnnbench.png' width="800px">
 
 ## Join the community
 See the CONTRIBUTING file for how to help out.

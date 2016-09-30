@@ -42,16 +42,18 @@ end
 
 -- | Construct a multi-level bidirectional network.
 rnnlib.makeBidirectional = argcheck{
-    { name = 'cell'        , type = 'function'                   },
+    { name = 'cellfn'      , type = 'function'                   },
+    { name = 'inputsize'   , type = 'number'                     },
     { name = 'hids'        , type = 'table'                      },
     { name = 'sharefields' , type = 'table'    , opt     = true  },
     { name = 'savehidden'  , type = 'boolean'  , default = false },
-    call = function(cell, hids, sharefields, savehidden)
+    call = function(cellfn, inputsize, hids, sharefields, savehidden)
+        hids[0] = inputsize
         local initfs = {}
         local birnn = nn.SequenceTable(1)
         local makeLayer = rnnlib.makeBidirectionalLayer
         for i = 1, #hids do
-            local c, f = cell(
+            local c, f = cellfn(
                 i == 1 and hids[i-1] or 2 * hids[i-1],
                 hids[i]
             )
