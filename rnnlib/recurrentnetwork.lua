@@ -7,7 +7,6 @@
 
 --------------------------------------------------------------------------------
 -- Recurrent Network Constructor
---   TODO: Take in a list of cell, dimension tuples
 --------------------------------------------------------------------------------
 
 local argcheck = require 'argcheck'

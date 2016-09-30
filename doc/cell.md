@@ -1,48 +1,48 @@
 # rnnlib.cell
 
-## cell.flip
+## [cell.flip](../rnnlib/cell.lua#L54)
 
 ```lua
 cell.flip(function)
 ```
 
-## cell.gModule
+## [cell.gModule](../rnnlib/cell.lua#L62)
 
 ```lua
 cell.gModule(function)
 ```
 
-## cell.wrapOutput
+## [cell.wrapOutput](../rnnlib/cell.lua#L69)
 
 ```lua
 cell.wrapOutput(make, constructor, ...)
 ```
 
-## cell.LSTM
+## [cell.LSTM](../rnnlib/cell.lua#L108)
 
 ```lua
 cell.LSTM(nin, nhid)
 ```
 
-## cell.RNNReLU
+## [cell.RNNReLU](../rnnlib/cell.lua#L104)
 
 ```lua
 cell.RNNReLU(nin, nhid)
 ```
 
-## cell.RNNTanh
+## [cell.RNNTanh](../rnnlib/cell.lua#L100)
 
 ```lua
 cell.RNNTanh(nin, nhid)
 ```
 
-## cell.Elman
+## [cell.Elman](../rnnlib/cell.lua#L96)
 
 ```lua
 cell.Elman(nin, nhid)
 ```
 
-## cell.GRU
+## [cell.GRU](../rnnlib/cell.lua#L150)
 
 ```lua
 cell.GRU(nin, nhid)
