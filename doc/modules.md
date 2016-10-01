@@ -1,5 +1,38 @@
 # Modules
 
+All modules in this file take as input
+```lua
+let
+  input    = { hidden, sequence }
+where
+  hidden   = { state(bsz) }       -- a table of states corresponding to the initial states of each layer
+  sequence = { bsz x inputDim }   -- a table of input tensors of dimension bsz x inputDim
+```
+Here's an example of an n-layered LSTM network:
+```lua
+let
+  input  = { hidden, sequence }
+where
+  hidden = {
+    {
+      torch.Tensor(bsz, hiddenDim), -- This is the cell state.
+      torch.Tensor(bsz, hiddenDim), -- This is the hidden state.
+    }, -- This is a single cell's state.
+    -- ... You would repeat this n-1 more times.
+  }
+  sequence = {
+    torch.Tensor(bsz, inputDim),
+    -- ... You would repeat this for bptt-1 time steps.
+  }
+```
+For an n-layer RNN network, you would simply change
+```
+  hidden = {
+    torch.Tensor(bsz, hiddenDim) -- This is a single cell's state.
+    -- ... Again, you would just repeat this n-1 more times.
+  }
+```
+
 ## [nn.RNN](../rnnlib/nn/RNN.lua)
 
 ```lua
@@ -13,7 +46,7 @@ nn.RNN{
 }
 ```
 
-
+Constructs an RNN network using the [RNN](cell.md#cellelman) cell.
 
 ## [nn.LSTM](../rnnlib/nn/LSTM.lua)
 
@@ -28,7 +61,7 @@ nn.LSTM{
 }
 ```
 
-
+Constructs an LSTM network using the [LSTM](cell.md#celllstm) cell.
 
 ## [nn.GRU](../rnnlib/nn/GRU.lua)
 
@@ -43,7 +76,7 @@ nn.GRU{
 }
 ```
 
-
+Constructs an LSTM network using the [GRU](cell.md#cellgru) cell.
 
 ## [nn.SequenceTable](../rnnlib/nn/SequenceTable.lua)
 
