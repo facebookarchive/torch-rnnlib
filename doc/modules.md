@@ -26,7 +26,7 @@ where
   }
 ```
 For an n-layer RNN network, you would simply change
-```
+```lua
   hidden = {
     torch.Tensor(bsz, hiddenDim) -- This is a single cell's state.
     -- ... Again, you would just repeat this n-1 more times.
