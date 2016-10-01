@@ -3,17 +3,17 @@
 All modules in this file take as input
 ```lua
 let
-  input    = { hidden, sequence }
+  input    = { state, sequence }
 where
-  hidden   = { state(bsz) }       -- a table of states corresponding to the initial states of each layer
+  state   = { state(bsz) }       -- a table of states corresponding to the initial states of each layer
   sequence = { bsz x inputDim }   -- a table of input tensors of dimension bsz x inputDim
 ```
-Here's an example of an n-layered LSTM network:
+Here's an example of the input to an n-layered LSTM network over T timesteps
 ```lua
 let
-  input  = { hidden, sequence }
+  input  = { state, sequence }
 where
-  hidden = {
+  state = {
     {
       torch.Tensor(bsz, hiddenDim), -- This is the cell state.
       torch.Tensor(bsz, hiddenDim), -- This is the hidden state.
@@ -22,14 +22,30 @@ where
   }
   sequence = {
     torch.Tensor(bsz, inputDim),
-    -- ... You would repeat this for bptt-1 time steps.
+    -- ... You would repeat this for T time steps.
   }
 ```
 For an n-layer RNN network, you would simply change
 ```lua
-  hidden = {
+  state = {
     torch.Tensor(bsz, hiddenDim) -- This is a single cell's state.
     -- ... Again, you would just repeat this n-1 more times.
+  }
+```
+The corresponding output would then look something like
+```lua
+let
+  output = { newstate, output }
+where
+  newstate = {
+    {
+      state(bsz), -- Repeated T times.
+    } -- Repeated n times.
+  }
+  output   = {
+    {
+      torch.Tensor(bsz, outputDim), -- Repeated T times.
+    } -- Also repeated n times.
   }
 ```
 

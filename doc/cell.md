@@ -35,7 +35,7 @@ cell.wrapOutput(make, constructor, ...)
 Wraps the output of a cell with another module.
 Recall that a cell's output looks like (state, output).
 The constructor should be an nn.Module constructor such as nn.Identity or nn.Dropout.
-The variadic arguments taken are fed to the constructor to produce an nn.Module.
+The variadic arguments at the end are fed to the constructor to produce an nn.Module.
 
 ## [cell.LSTM](../rnnlib/cell.lua#L108)
 
