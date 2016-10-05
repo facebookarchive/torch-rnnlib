@@ -293,5 +293,6 @@ printf(
 )
 
 if config.save ~= '' then
+    model.rnn = rnn
     torch.save(config.save, model)
 end
