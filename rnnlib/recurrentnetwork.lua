@@ -27,10 +27,9 @@ is required to be a table of functions.
 ]],
     { name = 'network'    , type = 'nn.SequenceTable' ,                              },
     { name = 'initfs'     , type = 'table'            ,                              },
-    { name = "hinitfun"   , type = "function"         , opt = true                   },
     { name = "winitfun"   , type = "function"         , default = mutils.defwinitfun },
     { name = "savehidden" , type = "boolean"          , default = false              },
-    call = function(network, initfs, hinitfun, winitfun, savehidden)
+    call = function(network, initfs, winitfun, savehidden)
         -- Initialize weights.
         winitfun(network)
 
@@ -133,7 +132,6 @@ handle this manually, set .saveHidden = false.
             return rnnlib.setupRecurrent{
                 network = network,
                 initfs = initfs,
-                hinitfun = hinitfun,
                 winitfun = winitfun,
                 savehidden = savehidden,
             }
