@@ -22,9 +22,6 @@ Run `luarocks make rocks/rnnlib-0.1-1.rockspec`.
 - [torch-tds](https://github.com/torch/tds)
 - [torch-sys](https://github.com/torch/sys)
 
-### Dependencies for building the documentation
-- [paths](https://github.com/torch/paths)
-
 ## Usage
 
 ### Construct the model
