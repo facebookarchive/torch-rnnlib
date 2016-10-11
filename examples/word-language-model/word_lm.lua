@@ -108,7 +108,8 @@ local rnn = nn[config.model]{
     usecudnn  = config.cudnn,
 }
 
-local decoder = nn.Linear(config.nhid2 or config.nhid1, ntoken)
+local decoder = nn.Linear(
+    config.nhid2 > 0 and config.nhid2 or config.nhid1, ntoken)
 decoder.bias:fill(0)
 decoder.weight:uniform(-initrange, initrange)
 
