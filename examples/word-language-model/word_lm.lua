@@ -17,6 +17,10 @@ local mutils = require 'rnnlib.mutils'
 local basepath = 'rnnlib.examples.word-language-model.'
 
 local cmd = torch.CmdLine()
+-- * Data parameters.
+cmd:option( '-train'     , ''     , 'Train file.'                               )
+cmd:option( '-valid'     , ''     , 'Valid file.'                               )
+cmd:option( '-test'      , ''     , 'Test file.'                                )
 -- * Model parameters.
 cmd:option( '-model'     , 'LSTM' , 'Type of recurrent net: RNN, LSTM, or GRU.' )
 cmd:option( '-emsize'    , 200    , 'Number of hidden units per layer.'         )
@@ -58,7 +62,11 @@ local function printf(...) print(string.format(...)) end
 -- LOAD DATA
 --------------------------------------------------------------------------------
 
-local batches = require(basepath .. 'get_data')()
+local batches = require(basepath .. 'get_data'){
+    train = config.train,
+    valid = config.valid,
+    test  = config.test,
+}
 local dict  = batches.dict
 local train = batches.train
 local valid = batches.valid

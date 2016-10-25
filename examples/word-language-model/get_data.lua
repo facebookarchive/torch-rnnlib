@@ -69,13 +69,22 @@ local function loadfile(path, dict)
     return ids
 end
 
-return function(path)
+return function(files, path)
     path = path or "."
     local dict = initdictionary()
     return {
-        train = loadfile(path .. '/penn/train.txt', dict),
-        valid = loadfile(path .. '/penn/valid.txt', dict),
-        test  = loadfile(path .. '/penn/test.txt',  dict),
+        train = loadfile(
+            files.train ~= ''
+                and files.train or path .. '/penn/train.txt',
+            dict),
+        valid = loadfile(
+            files.valid ~= ''
+                and files.valid or path .. '/penn/valid.txt',
+            dict),
+        test  = loadfile(
+            files.test  ~= ''
+                and files.test  or path .. '/penn/test.txt',
+            dict),
         dict  = dict,
     }
 end
