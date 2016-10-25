@@ -81,7 +81,7 @@ local nbatch = math.floor(train:size(1) / bptt / bsz)
 train = train:narrow(1, 1, nbatch * bptt * bsz)
 
 -- Ensure that valid and test are divisible by bsz * bptt.
-local validbsz, testbsz = 10, 10
+local validbsz,  testbsz  = 1, 1
 local validbptt, testbptt = 1, 1
 
 -- Divide up into batches.
