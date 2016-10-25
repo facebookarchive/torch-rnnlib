@@ -14,7 +14,9 @@ pcall(require, 'cutorch')
 pcall(require, 'cunn')
 pcall(require, 'cudnn')
 
-require 'rnnlib.nn.WrappedCudnnRnn'
+if cudnn then
+    require 'rnnlib.nn.WrappedCudnnRnn'
+end
 
 require 'rnnlib.nn.SequenceTable'
 require 'rnnlib.nn.RecurrentTable'

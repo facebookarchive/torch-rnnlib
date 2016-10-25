@@ -10,9 +10,6 @@
 --   Wraps a sequence of Cudnn.RNNs so that the API is the same as Rnnlib's.
 --------------------------------------------------------------------------------
 
-require 'nn'
-assert(pcall(require, 'cudnn'), 'You must have the torch Cudnn bindings')
-
 local argcheck = require 'argcheck'
 local cutils   = require 'rnnlib.cudnnutils'
 

@@ -9,9 +9,6 @@
 -- SequenceTable
 --------------------------------------------------------------------------------
 
-require 'nngraph'
-require 'cutorch'
-
 local argcheck = require 'argcheck'
 local mutils   = require 'rnnlib.mutils'
 
