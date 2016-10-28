@@ -100,11 +100,11 @@ local function getParams(rnn, layer, layerId)
             filterDimA:data()
         )
 
-        local offset = pointer[0] - rnn.weight:data()
+        local offset = pointer[0] - rnn.weight:data() + rnn.weight:storageOffset()
         params[key] = torch.CudaTensor(
-            rnn.weight:storage(), offset + 1, filterDimA:prod())
+            rnn.weight:storage(), offset, filterDimA:prod())
         params["grad" .. firstToUpper(key)] = torch.CudaTensor(
-            rnn.gradWeight:storage(), offset + 1, filterDimA:prod())
+            rnn.gradWeight:storage(), offset, filterDimA:prod())
     end
     return params
 end
