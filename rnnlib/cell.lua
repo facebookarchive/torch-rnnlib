@@ -93,7 +93,7 @@ local function makeRnn(nin, nhid, nonlinearity)
     return make, init
 end
 
-cell.Elman = function(nin, nhid)
+cell.RNNSigmoid = function(nin, nhid)
     return makeRnn(nin, nhid, nn.Sigmoid)
 end
 

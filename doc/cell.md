@@ -46,13 +46,13 @@ cell.LSTM(nin, nhid)
 Constructs an LSTM cell.
 `nin` is the size of the input dimension and `nhid` is the size of the hidden dimension.
 
-## [cell.RNNReLU](../rnnlib/cell.lua#L104)
+## [cell.RNNSigmoid](../rnnlib/cell.lua#L96)
 
 ```lua
-cell.RNNReLU(nin, nhid)
+cell.RNNSigmoid(nin, nhid)
 ```
 
-Constructs an RNN cell with ReLU nonlinearities.
+Constructs an Elman RNN cell with sigmoid nonlinearities.
 `nin` is the size of the input dimension and `nhid` is the size of the hidden dimension.
 
 ## [cell.RNNTanh](../rnnlib/cell.lua#L100)
@@ -64,13 +64,13 @@ cell.RNNTanh(nin, nhid)
 Constructs an RNN cell with tanh nonlinearities.
 `nin` is the size of the input dimension and `nhid` is the size of the hidden dimension.
 
-## [cell.Elman](../rnnlib/cell.lua#L96)
+## [cell.RNNReLU](../rnnlib/cell.lua#L104)
 
 ```lua
-cell.Elman(nin, nhid)
+cell.RNNReLU(nin, nhid)
 ```
 
-Constructs an RNN cell with sigmoid nonlinearities.
+Constructs an RNN cell with ReLU nonlinearities.
 `nin` is the size of the input dimension and `nhid` is the size of the hidden dimension.
 
 ## [cell.GRU](../rnnlib/cell.lua#L150)
