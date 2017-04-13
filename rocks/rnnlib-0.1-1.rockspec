@@ -2,7 +2,7 @@ package = "rnnlib"
 version = "0.1-1"
 
 source = {
-    url = "",
+    url = "git://github.com/facebookresearch/torch-rnnlib",
 }
 
 description = {
