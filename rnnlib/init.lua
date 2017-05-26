@@ -31,6 +31,10 @@ require 'rnnlib.nn.RNN'
 require 'rnnlib.nn.GRU'
 
 require 'rnnlib.nn.ReverseTable'
-require 'rnnlib.nn.ZipTable'
+
+if not nn.ZipTable then
+    -- ZipTable is missing from older nn versions
+    require 'rnnlib.nn.ZipTable'
+end
 
 return rnnlib
