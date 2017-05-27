@@ -138,7 +138,7 @@ SequenceTable.updateOutput = argcheck{
     { name = 'input' , type = 'table'            },
     call = function(self, input)
         local d = self.dim
-        if self.initfun then
+        if self.initfun and self.inputs then
             input = self.initfun(input, self.inputs[#self.inputs], d)
         end
         self.inputs = {}
